@@ -28,12 +28,15 @@ const SimpleFruitAutocomplete = () => {
         value={input}
         onChange={(e) => setInput(e.target.value)}
       />
-
-      <div>
+ <div>
         <ul>
-          {suggestions.map((suggestion, index) => (
-            <li key={index}>{suggestion}</li>
-          ))}
+          {suggestions.length > 0 ? (
+            suggestions.map((suggestion, index) => (
+              <li key={index}>{suggestion}</li>
+            ))
+          ) : (
+            <li>No suggestions available</li> // Fallback if no suggestions
+          )}
         </ul>
       </div>
     </div>
