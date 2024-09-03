@@ -1,15 +1,58 @@
 
-import React from "react";
+import React, { useState } from "react";
+
 import './../styles/App.css';
-import SimpleFruitAutocomplete from "./SimpleFruitAutocomplete";
+
+ 
+
+const fruits = ["apple", "banana", "cherry", "date", "elderberry", "fig"]
+
+ 
 
 const App = () => {
+
+ 
+
+  const[data, setData] = useState(fruits)
+
+  const[filteredData, setFilteredData] = useState(fruits)
+
+  
+
+ 
+
   return (
+
     <div>
-        {/* Do not remove the main div */}
-        <SimpleFruitAutocomplete/>
+
+        <input onChange={(e) => {
+
+          const arr = data.filter((item) => {
+
+            return item.includes(e.target.value)
+
+          })
+
+          setFilteredData(arr)
+
+        }} />
+
+        <ul>
+
+          {filteredData.map((item) => {
+
+            return <li>{item}</li>
+
+          })}
+
+        </ul>
+
     </div>
+
   )
+
 }
+
+ 
 
 export default App
